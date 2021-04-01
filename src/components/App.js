@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar'
 // import youtubeKey from '../api/youtubeKey'
 import axios from 'axios'
+import VideoList from './VideoList'
 class App extends React.Component {
 
     state = {
@@ -18,6 +19,7 @@ class App extends React.Component {
                 key: 'AIzaSyA-OUjkdxQGevjTBuxRAloWTlqxPlETdf8'
             }
         })
+        // total videos
         // console.log(response.data.items);
         this.setState({ videos: response.data.items })
 
@@ -26,7 +28,7 @@ class App extends React.Component {
         return (
             <div className='ui container'>
                 <SearchBar onSearchSubmit={this.onSearchSubmit} />
-                <p> i have {this.state.videos.length} videos</p>
+                <VideoList videos={this.state.videos} />
             </div>
         )
     }

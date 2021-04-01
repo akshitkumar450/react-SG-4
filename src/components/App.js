@@ -11,6 +11,11 @@ class App extends React.Component {
         selectedVideo: null
     }
 
+    // when the component first load it will search for given term
+    componentDidMount() {
+        this.onSearchSubmit('cars')
+    }
+
     onSearchSubmit = async (term) => {
         // console.log(term);
         const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
@@ -23,7 +28,11 @@ class App extends React.Component {
         })
         // total videos
         // console.log(response.data.items);
-        this.setState({ videos: response.data.items })
+        this.setState({
+            videos: response.data.items,
+            // default video 
+            selectedVideo: response.data.items[0]
+        })
 
     }
 

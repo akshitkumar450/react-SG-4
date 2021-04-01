@@ -3,7 +3,7 @@ import './VideoItem.css'
 
 const VideoItem = (props) => {
     return (
-        <div className='item video-item'>
+        <div className='item video-item' onClick={() => props.videoSelect(props.video)}>
             <img className='ui image'
                 src={props.video.snippet.thumbnails.medium.url}
                 alt={props.video.snippet.title}
